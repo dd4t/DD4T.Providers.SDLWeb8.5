@@ -54,7 +54,7 @@ namespace DD4T.Providers.SDLWeb85
             foreach (var currentKeyword in taxonomy)
             {
                 string currentKeywordName = currentKeyword.KeywordName;
-                if (currentKeywordName != keywordName)
+                if (!currentKeywordName.Equals(keywordName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     foundKeyword = recursive(currentKeyword.KeywordChildren.Cast<Keyword>().ToList(), keywordName);
                 }
@@ -119,7 +119,7 @@ namespace DD4T.Providers.SDLWeb85
             foreach (var item in keywords)
             {
 
-                if (item.KeywordName == valueToLookFor)
+                if (item.KeywordName.Equals(valueToLookFor, StringComparison.InvariantCultureIgnoreCase))
                 {
                     returnValue = item;
                 }
