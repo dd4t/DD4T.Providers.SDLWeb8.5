@@ -73,9 +73,9 @@ namespace DD4T.Providers.SDLWeb85
                     return cp.Content;
                 }
             }
-            LoggerService.Debug("GetContent: about to get component presentations with Highest Priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
+            LoggerService.Debug("GetContent: about to get component presentations with highest priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
             cp = cpFactory.GetComponentPresentationWithHighestPriority(tcmUri.ItemId);
-            LoggerService.Debug("GetContent: get component presentations with Highest Priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
+            LoggerService.Debug("GetContent: get component presentations with highest priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
             if (cp != null)
             {
                 return cp.Content;
