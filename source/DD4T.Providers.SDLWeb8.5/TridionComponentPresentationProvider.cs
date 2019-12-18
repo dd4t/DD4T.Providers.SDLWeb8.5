@@ -73,20 +73,12 @@ namespace DD4T.Providers.SDLWeb85
                     return cp.Content;
                 }
             }
-            LoggerService.Debug("GetContent: about to find all component presentations for {0}", LoggingCategory.Performance, tcmUri.ToString());
-            IList cps = cpFactory.FindAllComponentPresentations(tcmUri.ItemId);
-            LoggerService.Debug("GetContent: found all component presentations for {0}", LoggingCategory.Performance, tcmUri.ToString());
-
-            foreach (Tridion.ContentDelivery.DynamicContent.ComponentPresentation _cp in cps)
+            LoggerService.Debug("GetContent: about to get component presentations with Highest Priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
+            cp = cpFactory.GetComponentPresentationWithHighestPriority(tcmUri.ItemId);
+            LoggerService.Debug("GetContent: get component presentations with Highest Priority for {0}", LoggingCategory.Performance, tcmUri.ToString());
+            if (cp != null)
             {
-                if (_cp != null)
-                {
-                    if (_cp.Content.Contains("<Component"))
-                    {
-                        LoggerService.Debug("<<GetContent({0}) - find all", LoggingCategory.Performance, uri);
-                        return _cp.Content;
-                    }
-                }
+                return cp.Content;
             }
             LoggerService.Debug("<<GetContent({0}) - not found", LoggingCategory.Performance, uri);
             return string.Empty;
